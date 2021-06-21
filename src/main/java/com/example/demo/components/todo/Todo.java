@@ -3,6 +3,7 @@ package com.example.demo.components.todo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Todo {
@@ -10,27 +11,30 @@ public class Todo {
     public Todo() {
     }
 
-    public Todo(String description, String details, boolean done) {
+    public Todo(String description, String details, String status, Date deadline) {
         this.description = description;
         this.details = details;
-        this.done = done;
+        this.status = status;
+        this.deadline = deadline;
     }
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
 
     private String description;
 
     private String details;
 
-    private boolean done;
+    private String status;
 
-    public Long getId() {
+    private Date deadline;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -50,14 +54,6 @@ public class Todo {
         this.details = details;
     }
 
-    public boolean isDone() {
-        return done;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -72,5 +68,21 @@ public class Todo {
     @Override
     public int hashCode() {
         return 31;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
     }
 }

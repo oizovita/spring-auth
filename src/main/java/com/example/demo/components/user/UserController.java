@@ -12,7 +12,6 @@ import java.util.Collection;
 @RequestMapping("/users")
 public class UserController {
 
-
     private final UserRepository userRepository;
 
     public UserController(UserRepository userRepository) {
