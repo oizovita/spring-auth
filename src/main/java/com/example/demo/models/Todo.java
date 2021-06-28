@@ -1,9 +1,10 @@
-package com.example.demo.components.todo;
+package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 public class Todo {
@@ -19,8 +20,10 @@ public class Todo {
     }
 
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id", columnDefinition = "BINARY(16)", length = 16)
+    private UUID id;
 
     private String description;
 
@@ -30,11 +33,11 @@ public class Todo {
 
     private Date deadline;
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

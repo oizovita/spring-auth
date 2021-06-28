@@ -1,18 +1,22 @@
-package com.example.demo.components.todo.dto;
+package com.example.demo.payload.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.*;
 import java.util.Date;
 
-public class TodoUpdateDTO {
+public class TodoCreateRequest {
 
+    @NotEmpty
     private String description;
 
+    @NotEmpty
     private String details;
 
-    private String status;
+    private String status = "new";
 
+    @NotEmpty
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @JsonFormat(pattern = "MM/dd/yyyy")
     private Date deadline;
@@ -35,10 +39,6 @@ public class TodoUpdateDTO {
 
     public String getStatus() {
         return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Date getDeadline() {
