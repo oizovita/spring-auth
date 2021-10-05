@@ -101,8 +101,6 @@ public class AuthController {
                     .orElseThrow(() -> new RuntimeException(ROLE_ERROR));
             roles.add(userRole);
         } else {
-            roleRepository.save(new Role(ERole.ROLE_ADMIN));
-            roleRepository.save(new Role(ERole.ROLE_USER));
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
